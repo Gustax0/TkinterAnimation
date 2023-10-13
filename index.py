@@ -9,10 +9,10 @@ root = tk.Tk()
 class App:
     def __init__(self):
         self.Interface()
-        self.Imagens()
         self.Botao()
-
-        # self.Animar()
+        self.Pular
+        self.Cair()
+        self.Imagens()
 
     def Interface(self):
         self.width = root.winfo_screenwidth()
@@ -44,8 +44,6 @@ class App:
         idle_label = tk.Label(idle_frame, image=idle_tk)
         idle_label.pack(fill=tk.BOTH, expand=tk.NO)
         idle_label.image = idle_tk
-        time.sleep(1)
-        self.Cair()
 
     def Cair(self):
         idle = Image.open("assets/mario_falling.png")
