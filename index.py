@@ -12,9 +12,9 @@ class App:
         self.Imagens()
 
     def Interface(self):
-        self.width = root.winfo_screenwidth()
-        self.height = root.winfo_screenheight()
-        root.geometry("%dx%d" % (self.width / 1.5, self.height / 1.5))
+        self.width = root.winfo_screenwidth() // 2
+        self.height = root.winfo_screenheight() // 2
+        root.geometry(f"800x600+{self.width - 400}+{self.height - 300}")
         root.resizable(True, True)
         root.title("Animando")
 
@@ -22,13 +22,13 @@ class App:
         botao = Button(
             root, text="Animar", bd=0, fg="#f54245", bg="#f27e80", command=self.Animar
         )
-        botao.place(x=self.width / 2 - 50, y=self.height / 2 - 20)
+        botao.place(x=self.width/1.5, y=self.height/1.5+200)
 
     def Imagens(self):
         self.idle = Image.open("assets/mario_idle.png")
         self.idle_tk = ImageTk.PhotoImage(self.idle)
         self.idle_frame = tk.Frame(root)
-        self.idle_frame.place(x=self.width / 2 - self.idle.width / 2, y=self.height / 2 - self.idle.height / 2)
+        self.idle_frame.place(x=self.width - self.idle.width / 1.5, y=self.height - self.idle.height / 1.5)
         self.idle_label = tk.Label(self.idle_frame, image=self.idle_tk)
         self.idle_label.pack(fill=tk.BOTH, expand=tk.NO)
         self.idle_label.image = self.idle_tk
