@@ -8,6 +8,7 @@ root = tk.Tk()
 class App:
     def __init__(self):
         self.Interface()
+        self.idle = Image.open("assets/mario_idle.png")  # move the initialization here
         self.Botao()
         self.Imagens()
 
@@ -29,7 +30,6 @@ class App:
     def Imagens(self):
         sprite_center_x = self.screen_center_x - self.idle.width / 1.5
         sprite_center_y = self.screen_center_y - self.idle.height / 1.5
-        self.idle = Image.open("assets/mario_idle.png")
         self.idle_tk = ImageTk.PhotoImage(self.idle)
         self.idle_frame = tk.Frame(root)
         self.idle_frame.place(x=sprite_center_x, y=sprite_center_y)
