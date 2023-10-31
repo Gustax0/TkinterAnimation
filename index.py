@@ -28,8 +28,8 @@ class App:
         botao.place(x=button_center_x, y=button_center_y)
 
     def Imagens(self):
-        sprite_center_x = self.screen_center_x - self.idle.width / 1.5
-        sprite_center_y = self.screen_center_y - self.idle.height / 1.5
+        sprite_center_x = self.screen_center_x - self.idle.width / 2
+        sprite_center_y = self.screen_center_y - self.idle.height / 2
         self.idle_tk = ImageTk.PhotoImage(self.idle)
         self.idle_frame = tk.Frame(root)
         self.idle_frame.place(x=sprite_center_x, y=sprite_center_y)
