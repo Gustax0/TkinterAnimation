@@ -25,7 +25,13 @@ class App:
         button_center_x = root.winfo_width() // 2
         button_center_y = root.winfo_height() // 2 + (root.winfo_height() // 5)
         botao = Button(
-            root, text="Animar", bd=0, fg="#f54245", bg="#f27e80", command=self.Animar
+            root,
+              text="Animar",
+                bd=0,
+                  fg="#f54245",
+                    bg="#f27e80",
+                        font= ('Helvetica 20 bold italic'),
+                            command=self.Animar
         )
         botao.place(x=button_center_x, y=button_center_y, anchor=CENTER)
 
@@ -42,26 +48,26 @@ class App:
         self.Pular(0)
 
     def Pular(self, counter):
-        if counter < 30:
+        if counter < 7:
             jumping = Image.open("assets/mario_jumping.png")
             jumping = jumping.resize((jumping.width, jumping.height))
             self.jumping_tk = ImageTk.PhotoImage(jumping)
             self.idle_label.config(image=self.jumping_tk)
             self.idle_label.image = self.jumping_tk
-            self.sprite_y -= 5
+            self.sprite_y -= 10
             self.idle_label.place(x=self.sprite_x, y=self.sprite_y)
             root.after(50, self.Pular, counter + 1)
         else:
             self.Cair(0)
 
     def Cair(self, counter):
-        if counter < 20:
+        if counter < 7:
             falling = Image.open("assets/mario_falling.png")
             falling = falling.resize((falling.width, falling.height))
             falling_tk = ImageTk.PhotoImage(falling)
             self.idle_label.config(image=falling_tk)
             self.idle_label.image = falling_tk
-            self.sprite_y += 5 
+            self.sprite_y += 10
             self.idle_label.place(x=self.sprite_x, y=self.sprite_y)
             root.after(50, self.Cair, counter + 1)
         else:
