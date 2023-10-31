@@ -12,23 +12,27 @@ class App:
         self.Imagens()
 
     def Interface(self):
-        self.width = root.winfo_screenwidth() // 2
-        self.height = root.winfo_screenheight() // 2
-        root.geometry(f"800x600+{self.width - 400}+{self.height - 300}")
+        self.screen_center_x = root.winfo_screenwidth() // 2
+        self.screen_center_y = root.winfo_screenheight() // 2
+        root.geometry(f"800x600+{self.screen_center_x - 400}+{self.screen_center_y - 300}")
         root.resizable(True, True)
         root.title("Animando")
 
     def Botao(self):
+        button_center_x = self.screen_center_x / 1.5
+        button_center_y = self.screen_center_y / 1.5 + 200
         botao = Button(
             root, text="Animar", bd=0, fg="#f54245", bg="#f27e80", command=self.Animar
         )
-        botao.place(x=self.width/1.5, y=self.height/1.5+200)
+        botao.place(x=button_center_x, y=button_center_y)
 
     def Imagens(self):
+        sprite_center_x = self.screen_center_x - self.idle.width / 1.5
+        sprite_center_y = self.screen_center_y - self.idle.height / 1.5
         self.idle = Image.open("assets/mario_idle.png")
         self.idle_tk = ImageTk.PhotoImage(self.idle)
         self.idle_frame = tk.Frame(root)
-        self.idle_frame.place(x=self.width - self.idle.width / 1.5, y=self.height - self.idle.height / 1.5)
+        self.idle_frame.place(x=sprite_center_x, y=sprite_center_y)
         self.idle_label = tk.Label(self.idle_frame, image=self.idle_tk)
         self.idle_label.pack(fill=tk.BOTH, expand=tk.NO)
         self.idle_label.image = self.idle_tk
