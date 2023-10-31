@@ -7,8 +7,10 @@ root = tk.Tk()
 class App:
     def __init__(self):
         self.Interface()
-        self.Botao()
+        self.Back()
         self.Imagens()
+        self.Botao()
+        
 
     def Interface(self):
         self.screen_width = root.winfo_screenwidth()
@@ -35,6 +37,7 @@ class App:
         )
         botao.place(x=button_center_x, y=button_center_y, anchor=CENTER)
 
+
     def Imagens(self):
         self.idle = Image.open("assets/mario_idle.png")
         self.idle = self.idle.resize((self.idle.width, self.idle.height))
@@ -54,7 +57,7 @@ class App:
             self.jumping_tk = ImageTk.PhotoImage(jumping)
             self.idle_label.config(image=self.jumping_tk)
             self.idle_label.image = self.jumping_tk
-            self.sprite_y -= 10
+            self.sprite_y -= 15
             self.idle_label.place(x=self.sprite_x, y=self.sprite_y)
             root.after(50, self.Pular, counter + 1)
         else:
@@ -67,7 +70,7 @@ class App:
             falling_tk = ImageTk.PhotoImage(falling)
             self.idle_label.config(image=falling_tk)
             self.idle_label.image = falling_tk
-            self.sprite_y += 10
+            self.sprite_y += 15
             self.idle_label.place(x=self.sprite_x, y=self.sprite_y)
             root.after(50, self.Cair, counter + 1)
         else:
@@ -76,6 +79,14 @@ class App:
     def VoltarIdle(self):
         self.idle_label.config(image=self.idle_tk)
         self.idle_label.image = self.idle_tk
+
+    def Back(self):
+        self.background = Image.open("assets/background.png")
+        self.background_tk = ImageTk.PhotoImage(self.background)
+        self.background_x = root.winfo_width() // 2 - self.background.width // 2
+        self.background_y = root.winfo_height() // 2 - self.background.height // 2
+        self.background_label = tk.Label(root, image=self.background_tk)
+        self.background_label.place(x=self.background_x, y=self.background_y)
 
 if __name__ == "__main__":
     app = App()
