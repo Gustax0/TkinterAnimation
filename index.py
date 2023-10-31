@@ -6,8 +6,9 @@ root = tk.Tk()
 
 class App:
     def __init__(self):
+        root.bind('<KeyPress>', self.espaco)
         self.Interface()
-        self.Back()
+        #self.Back()
         self.Imagens()
         self.Botao()
         
@@ -28,7 +29,7 @@ class App:
         button_center_y = root.winfo_height() // 2 + (root.winfo_height() // 5)
         botao = Button(
             root,
-              text="Animar",
+              text="Pular",
                 bd=0,
                   fg="#f54245",
                     bg="#f27e80",
@@ -49,6 +50,10 @@ class App:
 
     def Animar(self):
         self.Pular(0)
+
+    def espaco(self, event):
+        if event.keysym == 'space':
+            self.Animar()
 
     def Pular(self, counter):
         if counter < 7:
