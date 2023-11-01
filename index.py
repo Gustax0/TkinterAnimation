@@ -4,14 +4,14 @@ from PIL import Image, ImageTk
 
 root = tk.Tk()
 
+
 class App:
     def __init__(self):
-        root.bind('<KeyPress>', self.espaco)
+        root.bind("<KeyPress>", self.espaco)
         self.Interface()
-        #self.Back()
+        # self.Back()
         self.Imagens()
         self.Botao()
-        
 
     def Interface(self):
         self.screen_width = root.winfo_screenwidth()
@@ -29,15 +29,14 @@ class App:
         button_center_y = root.winfo_height() // 2 + (root.winfo_height() // 5)
         botao = Button(
             root,
-              text="Pular",
-                bd=0,
-                  fg="#f54245",
-                    bg="#f27e80",
-                        font= ('Helvetica 20 bold italic'),
-                            command=self.Animar
+            text="Pular",
+            bd=0,
+            fg="#f54245",
+            bg="#f27e80",
+            font=("Helvetica 20 bold italic"),
+            command=self.Animar,
         )
         botao.place(x=button_center_x, y=button_center_y, anchor=CENTER)
-
 
     def Imagens(self):
         self.idle = Image.open("assets/mario_idle.png")
@@ -52,7 +51,7 @@ class App:
         self.Pular(0)
 
     def espaco(self, event):
-        if event.keysym == 'space':
+        if event.keysym == "space":
             self.Animar()
 
     def Pular(self, counter):
@@ -92,6 +91,7 @@ class App:
         self.background_y = root.winfo_height() // 2 - self.background.height // 2
         self.background_label = tk.Label(root, image=self.background_tk)
         self.background_label.place(x=self.background_x, y=self.background_y)
+
 
 if __name__ == "__main__":
     app = App()
